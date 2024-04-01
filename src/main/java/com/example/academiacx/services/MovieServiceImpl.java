@@ -55,7 +55,7 @@ public class MovieServiceImpl implements MovieService {
     public boolean delete(Long id) {
 
         MovieModel movie = movieRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Movie not found"));
+                .orElseThrow(() -> new IllegalArgumentException("Movie não encontrado"));
 
         for (DirectorModel director : movie.getDirectors()) {
             director.getMovies().remove(movie);

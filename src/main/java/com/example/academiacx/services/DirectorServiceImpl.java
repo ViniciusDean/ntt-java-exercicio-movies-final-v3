@@ -52,7 +52,7 @@ public class DirectorServiceImpl implements DirectorService {
     public boolean delete(Long id) {
 
         DirectorModel director = directorRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Director not found"));
+                .orElseThrow(() -> new IllegalArgumentException("Director não encontrado"));
 
         for (UserModel user : director.getUser()) {
             user.getFavoriteDirectors().remove(director);

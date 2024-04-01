@@ -64,7 +64,7 @@ public class StudioServiceImpl implements StudioService {
     @Override
     public boolean delete(Long id) {
         StudioModel studio = studioRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Genre não encontrado"));
+                .orElseThrow(() -> new IllegalArgumentException("Studio não encontrado"));
 
         for (MovieModel movie : studio.getMovies()) {
             movie.setStudio(null);

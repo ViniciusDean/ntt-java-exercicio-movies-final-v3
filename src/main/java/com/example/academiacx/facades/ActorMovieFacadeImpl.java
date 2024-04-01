@@ -17,10 +17,10 @@ public class ActorMovieFacadeImpl implements ActorMovieFacade {
     @Override
     public MovieModel addActorToMovie(Long movieId, Long actorId) {
         MovieModel movieModel = movieRepository.findById(movieId)
-                .orElseThrow(() -> new IllegalArgumentException("Movie not found"));
+                .orElseThrow(() -> new IllegalArgumentException("Movie não encontrado"));
 
         ActorModel actorModel = actorRepository.findById(actorId)
-                .orElseThrow(() -> new IllegalArgumentException("Actor not found"));
+                .orElseThrow(() -> new IllegalArgumentException("Actor não encontrado"));
 
         if (movieModel.getActors().contains(actorModel)) {
             throw new RuntimeException("Actor ja esta associado ao movie");

@@ -17,10 +17,10 @@ public class DirectorMovieFacadeImpl implements DirectorMovieFacade {
     @Override
     public DirectorModel addDirectorToMovie(Long movieId, Long directorId) {
         MovieModel movieModel = movieRepository.findById(movieId)
-                .orElseThrow(() -> new IllegalArgumentException("Movie not found"));
+                .orElseThrow(() -> new IllegalArgumentException("Movie não encontrado"));
 
         DirectorModel directorModel = directorRepository.findById(directorId)
-                .orElseThrow(() -> new IllegalArgumentException("Director not found"));
+                .orElseThrow(() -> new IllegalArgumentException("Director não encontrado"));
 
         if (directorModel.getMovies().contains(movieModel)) {
             throw new RuntimeException("Movie ja esta associado ao director");

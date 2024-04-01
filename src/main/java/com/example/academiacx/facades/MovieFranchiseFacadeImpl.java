@@ -17,10 +17,10 @@ public class MovieFranchiseFacadeImpl implements MovieFranchiseFacade {
     @Override
     public MovieModel setFranchise(Long movieId, Long franchiseId) {
         MovieModel movieModel = movieRepository.findById(movieId)
-                .orElseThrow(() -> new IllegalArgumentException("Movie not found"));
+                .orElseThrow(() -> new IllegalArgumentException("Movie não encontrado"));
 
         FranchiseModel franchiseModel = franchiseRepository.findById(franchiseId)
-                .orElseThrow(() -> new IllegalArgumentException("Franchise not found"));
+                .orElseThrow(() -> new IllegalArgumentException("Franchise não encontrado"));
         if (movieModel.getFranchise() != null) {
             throw new IllegalArgumentException("Movie já está em uma franchise");
         }
