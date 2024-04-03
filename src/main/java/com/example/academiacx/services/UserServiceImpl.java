@@ -21,16 +21,15 @@ public class UserServiceImpl implements UserService {
     private UserRepository userRepository;
 
     @Override
-    public List<UserDto> listUsers() {
-
+    public List<UserModel> listUsers() {
         List<UserModel> listUsers = userRepository.findAll();
-        return listUsers.stream().map(x -> new UserDto(x)).toList();
+        return listUsers;
     }
     @Override
-    public Optional<UserDto> findById(Long id)
+    public Optional<UserModel> findById(Long id)
     {
-        Optional<UserModel> userId = userRepository.findById(id);
-        return userId.map(x -> new UserDto(x));
+        Optional<UserModel> userModel = userRepository.findById(id);
+        return userModel;
     }
     public List<UserBookmarkDto> getAllUserBookmarksDto() {
         List<UserModel> listUsers = userRepository.findAll();

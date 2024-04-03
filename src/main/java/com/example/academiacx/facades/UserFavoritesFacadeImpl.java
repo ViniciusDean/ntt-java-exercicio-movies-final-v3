@@ -7,6 +7,7 @@ import com.example.academiacx.models.UserModel;
 import com.example.academiacx.repository.DirectorRepository;
 import com.example.academiacx.repository.MovieRepository;
 import com.example.academiacx.repository.UserRepository;
+import com.example.academiacx.services.inter.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +19,8 @@ import java.util.Set;
 public class UserFavoritesFacadeImpl implements UserFavoritesFacade {
     @Autowired
     UserRepository userRepository;
+    @Autowired
+    UserService userService;
     @Autowired
     MovieRepository movieRepository;
     @Autowired
@@ -52,7 +55,6 @@ public class UserFavoritesFacadeImpl implements UserFavoritesFacade {
             userModel.getFavoriteDirectors().add(directorModel);
             return userRepository.save(userModel);
         }
-
 
     }
 }

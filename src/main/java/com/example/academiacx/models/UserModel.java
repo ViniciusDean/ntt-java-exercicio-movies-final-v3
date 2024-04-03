@@ -2,6 +2,7 @@ package com.example.academiacx.models;
 
 import com.example.academiacx.models.dto.UserDto;
 import jakarta.persistence.*;
+import jakarta.validation.Valid;
 
 import java.util.List;
 
@@ -35,7 +36,17 @@ public class UserModel {
             inverseJoinColumns = @JoinColumn(name = "director_id")
     )
     private List<DirectorModel> favoriteDirectors;
+        @Valid
+        @OneToOne
+        private AddressModel address;
 
+    public AddressModel getAddress() {
+        return address;
+    }
+
+    public void setAddress(AddressModel address) {
+        this.address = address;
+    }
 
     public List<MovieModel> getFavoriteMovies() {
         return favoriteMovies;
@@ -52,6 +63,7 @@ public class UserModel {
     public void setFavoriteDirectors(List<DirectorModel> favoriteDirectors) {
         this.favoriteDirectors = favoriteDirectors;
     }
+
 
     public UserModel() {
     }
@@ -101,7 +113,5 @@ public class UserModel {
     public void setUsername(String username) {
         this.username = username;
     }
-
-
 
 }

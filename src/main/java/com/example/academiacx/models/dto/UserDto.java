@@ -1,11 +1,14 @@
 package com.example.academiacx.models.dto;
 
+import com.example.academiacx.models.AddressModel;
 import com.example.academiacx.models.UserModel;
 public class UserDto {
     private Long id;
     private String name;
     private String username;
     private String email;
+    private AddressModel address;
+
 
     public UserDto() {
     }
@@ -17,6 +20,15 @@ public class UserDto {
         this.name = userModel.getName();
         this.email = userModel.getEmail();
         this.username = userModel.getUsername();
+        this.address = userModel.getAddress();
+    }
+
+    public AddressModel getAddress() {
+        return address;
+    }
+
+    public void setAddress(AddressModel address) {
+        this.address = address;
     }
 
     public Long getId() {

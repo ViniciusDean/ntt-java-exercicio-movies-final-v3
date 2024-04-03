@@ -11,6 +11,7 @@ import com.example.academiacx.models.dto.UserDto;
 import com.example.academiacx.repository.FranchiseRepository;
 import com.example.academiacx.repository.MovieRepository;
 import com.example.academiacx.services.inter.FranchiseService;
+import org.hibernate.annotations.Cascade;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

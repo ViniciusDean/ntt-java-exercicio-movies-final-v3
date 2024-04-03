@@ -1,19 +1,24 @@
 package com.example.academiacx.models.dto;
 
 import com.example.academiacx.models.ActorModel;
+import com.example.academiacx.models.AddressModel;
 import com.example.academiacx.models.MovieModel;
 
 import java.util.List;
 
 public class ActorDto {
+
     private Long id;
     private String name;
     private List<MovieModel> movies;
+
     public ActorDto (ActorModel actorModel){
         this.id = actorModel.getId();
         this.name = actorModel.getName();
         this.movies = actorModel.getMovies();
+
     }
+
 
     public Long getId() {
         return id;

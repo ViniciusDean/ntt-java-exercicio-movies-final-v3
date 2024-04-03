@@ -1,5 +1,6 @@
 package com.example.academiacx.controller;
 
+import com.example.academiacx.facades.inter.UserFacade;
 import com.example.academiacx.facades.inter.UserFavoritesFacade;
 import com.example.academiacx.models.MovieModel;
 import com.example.academiacx.models.StreamingModel;
@@ -7,8 +8,10 @@ import com.example.academiacx.models.UserModel;
 import com.example.academiacx.models.dto.UserBookmarkDto;
 import com.example.academiacx.models.dto.UserDto;
 import com.example.academiacx.services.inter.UserService;
+import com.example.academiacx.utils.MovieUtil;
 import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,25 +23,33 @@ import java.util.Optional;
 public class UserController {
 
     @Autowired
+    private UserFacade userFacade;
+    @Autowired
     private UserService userService;
     @Autowired
     private UserFavoritesFacade userFavoritesFacade;
 
-
-
     @GetMapping(value = "/list")
-    public ResponseEntity<List<UserDto>> findAll()
+    public ResponseEntity<? > findAll()
     {
-        List<UserDto> response = userService.listUsers();
+        MovieUtil movieUtil ;
+        try {
+            return new ResponseEntity<> (userFacade.listUsers(), HttpStatus.OK);
+        } catch (Exception e){
+            return new ResponseEntity<>(MovieUtil.result(e.getMessage(), HttpStatus.UNPROCESSABLE_ENTITY.value()), HttpStatus.UNPROCESSABLE_ENTITY);
+        }
 
-        return response != null ? ResponseEntity.ok(response) : ResponseEntity.notFound().build();
     }
     @GetMapping(value = "/{id}")
-    public ResponseEntity<Optional<UserDto>> findbyId(@PathVariable Long id)
+    public ResponseEntity<?> findbyId(@PathVariable Long id)
     {
-        Optional<UserDto> response = userService.findById(id);
+        try {
+            return new ResponseEntity<> (userFacade.findById(id), HttpStatus.OK);
+        }catch (Exception e){
+            return new ResponseEntity<>(MovieUtil.result(e.getMessage(), HttpStatus.UNPROCESSABLE_ENTITY.value()), HttpStatus.UNPROCESSABLE_ENTITY);
+        }
 
-        return response != null ? ResponseEntity.ok(response) : ResponseEntity.notFound().build();
+
     }
 
 
@@ -61,7 +72,7 @@ public class UserController {
     @PutMapping(value = "/update")
     public ResponseEntity<UserModel> update(@RequestBody UserModel userModel)
     {
-        UserModel response = userService.update(userModel);
+        UserModel response = userFacade.update(userModel);
 
         return response != null ? ResponseEntity.ok(response) : ResponseEntity.badRequest().build();
     }

@@ -62,8 +62,6 @@ public class MovieModel {
         this.user = user;
     }
 
-
-
     public List<StreamingModel> getStreaming() {
         return streaming;
     }
@@ -71,8 +69,6 @@ public class MovieModel {
     public void setStreaming(List<StreamingModel> streaming) {
         this.streaming = streaming;
     }
-
-
 
     public Long getId() {
         return id;
@@ -121,8 +117,6 @@ public class MovieModel {
     public void setDirectors(List<DirectorModel> directors) {
         this.directors = directors;
     }
-
-
 
     public List<ActorModel> getActors() {
         return actors;
