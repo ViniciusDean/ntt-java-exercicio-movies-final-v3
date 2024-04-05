@@ -19,8 +19,6 @@ public class UserModel implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String name;
-
     private String username;
 
     private String email;
@@ -90,7 +88,6 @@ public class UserModel implements UserDetails {
 
     public UserModel(UserDto userDto) {
         this.id = userDto.getId();
-        this.name = userDto.getName();
         this.email = userDto.getEmail();
         this.username = userDto.getUsername();
     }
@@ -103,13 +100,6 @@ public class UserModel implements UserDetails {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
 
     public String getEmail() {
         return email;

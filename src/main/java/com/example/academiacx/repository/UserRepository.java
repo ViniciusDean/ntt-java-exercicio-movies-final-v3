@@ -7,15 +7,13 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.security.core.userdetails.UserDetails;
 
 public interface UserRepository extends JpaRepository<UserModel, Long> {
-    //UserDetails UserfindByLogin(String username);
-    UserModel findByName (String name);
 
     UserModel findByEmail (String email);
 
-    UserModel findByEmailAndName(String email, String name);
 
-    @Query("from UserModel u where u.name = :name") //JPQL
-    UserModel busquePorNome (String name);
+
+    @Query("from UserModel u where u.username = :username") //JPQL
+    UserModel busquePorNome (String username);
 
     @Query("from UserModel u where u.email = :email") //JPQL
     UserModel busquePorEmail (@Param("email") String email);

@@ -11,12 +11,12 @@ public class UserBookmarkDto {
 
 
     private Long id;
-    private String name;
+    private String username;
     private List<MovieModel> favoriteMovies;
     private List<DirectorModel> favoriteDirectors;
     public UserBookmarkDto(UserModel userModel) {
         this.id = userModel.getId();
-        this.name = userModel.getName();
+        this.username = userModel.getUsername();
         this.favoriteMovies = userModel.getFavoriteMovies();
         this.favoriteDirectors = userModel.getFavoriteDirectors();
     }
@@ -30,14 +30,13 @@ public class UserBookmarkDto {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getUsername() {
+        return username;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setUsername(String username) {
+        this.username = username;
     }
-
 
     public List<MovieModel> getFavoriteMovies() {
         return favoriteMovies;

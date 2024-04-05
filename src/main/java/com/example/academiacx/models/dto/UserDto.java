@@ -4,7 +4,6 @@ import com.example.academiacx.models.AddressModel;
 import com.example.academiacx.models.UserModel;
 public class UserDto {
     private Long id;
-    private String name;
     private String username;
     private String email;
     private AddressModel address;
@@ -17,9 +16,8 @@ public class UserDto {
     public UserDto(UserModel userModel) {
 
         this.id = userModel.getId();
-        this.name = userModel.getName();
-        this.email = userModel.getEmail();
         this.username = userModel.getUsername();
+        this.email = userModel.getEmail();
         this.address = userModel.getAddress();
     }
 
@@ -39,13 +37,6 @@ public class UserDto {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
 
     public String getEmail() {
         return email;

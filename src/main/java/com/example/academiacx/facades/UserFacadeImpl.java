@@ -129,7 +129,7 @@ public class UserFacadeImpl implements UserFacade {
     public void populatorUsers(final UserModel users, final UserDto userDto) {
        UserModel userModel;
             userDto.setId(users.getId());
-            userDto.setName(users.getName());
+            userDto.setUsername(users.getUsername());
             userDto.setEmail(users.getEmail());
             userDto.setUsername(users.getUsername());
 

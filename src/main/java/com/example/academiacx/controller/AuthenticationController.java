@@ -6,8 +6,10 @@ import com.example.academiacx.models.dto.AuthenticationDto;
 import com.example.academiacx.models.dto.LoginResponseDto;
 import com.example.academiacx.models.dto.RegisterDto;
 import com.example.academiacx.repository.UserRepository;
+import com.example.academiacx.utils.MovieUtil;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -33,6 +35,7 @@ public class AuthenticationController {
         var auth = this.authenticationManager.authenticate(usernamePassword);
 
         var token = tokenService.generateToken((UserModel) auth.getPrincipal());
+
         return  ResponseEntity.ok(new LoginResponseDto(token));
     }
     @PostMapping("/register")
@@ -44,7 +47,7 @@ public class AuthenticationController {
 
         userRepository.save(newUser);
 
-        return ResponseEntity.ok().build();
+        return new ResponseEntity<>(MovieUtil.result("Usuario salvo com sucesso!!", HttpStatus.OK.value()), HttpStatus.OK);
     }
 }
 
